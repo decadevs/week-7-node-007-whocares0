@@ -59,7 +59,7 @@ function fetchRecords(req, res) {
 exports.fetchRecords = fetchRecords;
 function calculate(req, res) {
     return __awaiter(this, void 0, void 0, function () {
-        var _a, shape, dimension, Area, result, squareError, rectangleError, triangleError, s, circleError, newResult;
+        var _a, shape, dimension, Area, result, squareError, rectangleError, triangleError, semiP, circleError, newResult;
         return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0:
@@ -78,7 +78,7 @@ function calculate(req, res) {
                             };
                             break;
                         case 'rectangle':
-                            rectangleError = joiValidation_1.squareValidation(req.body).error;
+                            rectangleError = joiValidation_1.rectangleValidation(req.body).error;
                             if (rectangleError) {
                                 return [2 /*return*/, res.status(400).json({ error: rectangleError })];
                             }
@@ -90,12 +90,12 @@ function calculate(req, res) {
                             };
                             break;
                         case 'triangle':
-                            triangleError = joiValidation_1.squareValidation(req.body).error;
+                            triangleError = joiValidation_1.triangleValidation(req.body).error;
                             if (triangleError) {
                                 return [2 /*return*/, res.status(400).json({ error: triangleError })];
                             }
-                            s = (dimension.a + dimension.b + dimension.c) / 2;
-                            Area = Math.sqrt(s * (s - dimension.a) * (s - dimension.b) * (s - dimension.c));
+                            semiP = (dimension.a + dimension.b + dimension.c) / 2;
+                            Area = Number(Math.sqrt(semiP * (semiP - dimension.a) * (semiP - dimension.b) * (semiP - dimension.c)).toFixed(2));
                             result = {
                                 shape: shape,
                                 dimension: dimension,
@@ -103,7 +103,7 @@ function calculate(req, res) {
                             };
                             break;
                         case 'circle':
-                            circleError = joiValidation_1.squareValidation(req.body).error;
+                            circleError = joiValidation_1.circleValidation(req.body).error;
                             if (circleError) {
                                 return [2 /*return*/, res.status(400).json({ error: circleError })];
                             }

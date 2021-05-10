@@ -35,7 +35,7 @@ export async function calculate(req:Request,res:Response){
         }
             break;
         case 'rectangle':
-            let rectangleError = squareValidation(req.body).error
+            let rectangleError = rectangleValidation(req.body).error
             if(rectangleError){
                 return res.status(400).json({error: rectangleError})
             }
@@ -47,12 +47,12 @@ export async function calculate(req:Request,res:Response){
             }
             break;
         case 'triangle':
-            let triangleError = squareValidation(req.body).error
+            let triangleError = triangleValidation(req.body).error
             if(triangleError){
                 return res.status(400).json({error: triangleError})
             }
-            const s = (dimension.a + dimension.b + dimension.c)/2
-            Area = Math.sqrt(s*(s-dimension.a)*(s-dimension.b)*(s-dimension.c))
+            const semiP = (dimension.a + dimension.b + dimension.c)/2
+            Area = Number(Math.sqrt(semiP*(semiP-dimension.a)*(semiP-dimension.b)*(semiP-dimension.c)).toFixed(2))
             result = {
                 shape,
                 dimension,
@@ -60,7 +60,7 @@ export async function calculate(req:Request,res:Response){
             }
             break;
         case 'circle':
-            let circleError = squareValidation(req.body).error
+            let circleError = circleValidation(req.body).error
             if(circleError){
                 return res.status(400).json({error: circleError})
             }
