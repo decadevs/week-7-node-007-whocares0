@@ -61,8 +61,8 @@ function create(data) {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, new Promise(function (resolve, reject) {
-                        var newData = database.push(data);
-                        fs_1.default.writeFileSync(databasePath, JSON.stringify(newData));
+                        database.push(data);
+                        fs_1.default.writeFileSync(databasePath, JSON.stringify(database), 'utf8');
                         resolve(data);
                     })];
                 case 1: return [2 /*return*/, _a.sent()];

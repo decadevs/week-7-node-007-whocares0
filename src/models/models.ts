@@ -8,8 +8,8 @@ export async function getAll(){
 }
 export async function create(data:object){
     return await  new Promise((resolve,reject)=> {
-        let newData = database.push(data)
-        fs.writeFileSync(databasePath, JSON.stringify(newData))
+       database.push(data)
+        fs.writeFileSync(databasePath, JSON.stringify(database),'utf8')
         resolve(data)
     })
 }
