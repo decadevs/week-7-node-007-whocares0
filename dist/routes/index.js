@@ -8,7 +8,7 @@ var controller_1 = require("../controllers/controller");
 var router = express_1.default.Router();
 /* GET home page. */
 router.get("/", function (req, res) {
-    res.send("<h1>let us calculate the area of the following shapes: square,rectangle,triange,circle</h1>\n\nin the format of {shape: takes a string,dimension: an object for rectangle and triangle or a number for square and circle}\n");
+    res.send("<h1>Area calculator for  square,rectangle,triange,circle</h1>\n<h5>Navigate to /calculate </h5>\n<p>Format {shape: string,dimension: object || number}</p>\n\n");
 });
 router.get('/fetchRecords', controller_1.fetchRecords);
 router.post("/calculate", controller_1.calculate);

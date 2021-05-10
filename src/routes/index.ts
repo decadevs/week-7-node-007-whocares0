@@ -4,8 +4,10 @@ const router = express.Router();
 
 /* GET home page. */
 router.get("/", (req:Request,res:Response)=> {
-res.send(`<h1>let us calculate the area of the following shapes: square,rectangle,triange,circle</h1>\n
-in the format of {shape: takes a string,dimension: an object for rectangle and triangle or a number for square and circle}
+res.send(`<h1>Area calculator for  square,rectangle,triange,circle</h1>
+<h5>Navigate to /calculate </h5>
+<p>Format {shape: string,dimension: object || number}</p>
+
 `)
 })
 router.get('/fetchRecords',fetchRecords);
