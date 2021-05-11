@@ -70,7 +70,7 @@ function calculate(req, res) {
                             if (squareError) {
                                 return [2 /*return*/, res.status(400).json({ error: squareError })];
                             }
-                            Area = Math.pow(dimension.a, 2);
+                            Area = Math.pow(dimension, 2);
                             result = {
                                 shape: shape,
                                 dimension: dimension,

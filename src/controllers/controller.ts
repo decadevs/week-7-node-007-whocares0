@@ -27,7 +27,7 @@ export async function calculate(req:Request,res:Response){
             if(squareError){
                 return res.status(400).json({error: squareError})
             }
-            Area = dimension.a**2;
+            Area = dimension**2;
         result = {
             shape,
             dimension,
