@@ -15,7 +15,7 @@ import Joi from 'joi'
     return schema.validate(data);
 
 }
-export const triangleValidation = (data:object) => {
+export const triangleValidation = (data:object)=> {
     let schema = Joi.object({
         shape: Joi.string().required(),
         dimension: Joi.object().min(3).max(3).required()

@@ -68,7 +68,7 @@ function calculate(req, res) {
                         case 'square':
                             squareError = joiValidation_1.squareValidation(req.body).error;
                             if (squareError) {
-                                return [2 /*return*/, res.status(400).json({ error: squareError })];
+                                return [2 /*return*/, res.status(400).json({ error: squareError.details[0].message })];
                             }
                             Area = Math.pow(dimension, 2);
                             result = {
@@ -80,7 +80,7 @@ function calculate(req, res) {
                         case 'rectangle':
                             rectangleError = joiValidation_1.rectangleValidation(req.body).error;
                             if (rectangleError) {
-                                return [2 /*return*/, res.status(400).json({ error: rectangleError })];
+                                return [2 /*return*/, res.status(400).json({ error: rectangleError.details[0].message })];
                             }
                             Area = dimension.a * dimension.b;
                             result = {
@@ -92,7 +92,7 @@ function calculate(req, res) {
                         case 'triangle':
                             triangleError = joiValidation_1.triangleValidation(req.body).error;
                             if (triangleError) {
-                                return [2 /*return*/, res.status(400).json({ error: triangleError })];
+                                return [2 /*return*/, res.status(400).json({ error: triangleError.details[0].message })];
                             }
                             semiP = (dimension.a + dimension.b + dimension.c) / 2;
                             Area = Number(Math.sqrt(semiP * (semiP - dimension.a) * (semiP - dimension.b) * (semiP - dimension.c)).toFixed(2));
@@ -105,7 +105,7 @@ function calculate(req, res) {
                         case 'circle':
                             circleError = joiValidation_1.circleValidation(req.body).error;
                             if (circleError) {
-                                return [2 /*return*/, res.status(400).json({ error: circleError })];
+                                return [2 /*return*/, res.status(400).json({ error: circleError.details[0].message })];
                             }
                             Area = Number((Math.PI * Math.pow(dimension, 2)).toFixed(2));
                             result = {

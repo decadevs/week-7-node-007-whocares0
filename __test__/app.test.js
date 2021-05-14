@@ -2,6 +2,19 @@ import request from "supertest";
 import app from "../dist/app";
 
 describe("tests for all eendpoints", () => {
+  test("calculate Area of a square", async () => {
+    let data = {
+      shape: "square",
+      dimension: 5,
+    };
+    let res = await request(app).post("/calculate").send(data);
+    expect(res.status).toBe(201);
+    expect(res.body).toEqual({
+      shape: "square",
+      dimension: 5,
+      Area: 25,
+    });
+  });
   test("calculate Area of a circle", async () => {
     let data = {
       shape: "circle",

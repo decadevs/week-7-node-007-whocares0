@@ -46,12 +46,9 @@ var databasePath = "/Users/decagon/Documents/Decagon week 7 assignment/week-7-no
 function getAll() {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, new Promise(function (resolve, reject) {
-                        resolve(database);
-                    })];
-                case 1: return [2 /*return*/, _a.sent()];
-            }
+            return [2 /*return*/, new Promise(function (resolve, reject) {
+                    resolve(database);
+                })];
         });
     });
 }
@@ -59,14 +56,17 @@ exports.getAll = getAll;
 function create(data) {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, new Promise(function (resolve, reject) {
+            try {
+                return [2 /*return*/, new Promise(function (resolve, reject) {
                         database.push(data);
                         fs_1.default.writeFileSync(databasePath, JSON.stringify(database), 'utf8');
                         resolve(data);
                     })];
-                case 1: return [2 /*return*/, _a.sent()];
             }
+            catch (err) {
+                console.log(err);
+            }
+            return [2 /*return*/];
         });
     });
 }

@@ -4,7 +4,7 @@ import {squareValidation,rectangleValidation,triangleValidation,circleValidation
 
 interface resultInterface {
     shape:string,
-    dimension: object | number,
+    dimension: Record<string,number> | number,
     Area : number
 }
 
@@ -25,7 +25,7 @@ export async function calculate(req:Request,res:Response){
         case 'square':
             let squareError = squareValidation(req.body).error
             if(squareError){
-                return res.status(400).json({error: squareError})
+                return res.status(400).json({error: squareError.details[0].message})
             }
             Area = dimension**2;
         result = {
@@ -37,7 +37,7 @@ export async function calculate(req:Request,res:Response){
         case 'rectangle':
             let rectangleError = rectangleValidation(req.body).error
             if(rectangleError){
-                return res.status(400).json({error: rectangleError})
+                return res.status(400).json({error: rectangleError.details[0].message})
             }
             Area = dimension.a * dimension.b
             result = {
@@ -49,7 +49,7 @@ export async function calculate(req:Request,res:Response){
         case 'triangle':
             let triangleError = triangleValidation(req.body).error
             if(triangleError){
-                return res.status(400).json({error: triangleError})
+                return res.status(400).json({error: triangleError.details[0].message})
             }
             const semiP = (dimension.a + dimension.b + dimension.c)/2
             Area = Number(Math.sqrt(semiP*(semiP-dimension.a)*(semiP-dimension.b)*(semiP-dimension.c)).toFixed(2))
@@ -62,7 +62,7 @@ export async function calculate(req:Request,res:Response){
         case 'circle':
             let circleError = circleValidation(req.body).error
             if(circleError){
-                return res.status(400).json({error: circleError})
+                return res.status(400).json({error: circleError.details[0].message})
             }
             Area = Number((Math.PI * dimension **2).toFixed(2))
             result = {
